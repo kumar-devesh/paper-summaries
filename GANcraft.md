@@ -38,16 +38,18 @@ view consistency but cannot handle the minecraft and real
 domain gap.
 
 The model takes as input a 3D block world for which a voxel bounded 
-radiance field is learned. Instead of a view dependent colour as in 
-neural rendering the network outputs image features which is passed 
+radiance field is learned. Instead of a view dependent colour used in  
+neural rendering techniques, the network outputs image features **C(r,z)** which is passed 
 into a cnn renderer which converts per pixel feature map to an image.
 The model is then trained on the adversarial and
 perceptual losses for the generated image and the pseudo ground truth 
 labels. Vertices of each voxel are assigned feature vectors which are shared 
-across advacent voxels ensuring that there are no inconsistencies in 
+across adjacent voxels ensuring that there are no inconsistencies in 
 the output.
 
 ![alt text](https://github.com/kumar-devesh/paper-summaries/blob/main/nerf%20eqn%20feature.PNG)
 
 ## Our Two Cents
-
+- The model is the state of the art in world to world translation task in the absence of the ground truth photorealistic images for the segmentation labels of the 3D world.
+- There is a still a blocky appearance to the output images because of the domain shift in the training images of the spade model and the projected images from the 3D block
+world
